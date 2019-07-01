@@ -60,11 +60,10 @@
 
 .content {
   position: relative;
+  background: #F3F3F3;
 }
 .flow-container {
   width: 100%;
-
-  background: #E9E9E9;
 }
 
 .side-toolbar {
@@ -86,6 +85,7 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
   overflow: hidden;
   border-radius: 1rem;
+  background: #ffffff;
   z-index: 1002;
 }
 .side-toolbar-item {
@@ -99,4 +99,83 @@
 }
 .side-toolbar-item + .side-toolbar-item {
   border-top: 0.5px solid #F0F0F0;
+}
+
+.radio-item {
+  margin-right: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding: 0.8rem 1.2rem;
+  border: 0.5px solid #F0F0F0;
+  border-radius: 0.8rem;
+  font-size: 1.3rem;
+  text-align: center;
+}
+.radio-item.checked {
+  background: #f49c00;
+  border: 0.5px solid #f49c00;
+  color: #ffffff;
+}
+.checkbox-item {
+  position: relative;
+  padding: 0.6rem 0;
+  font-size: 1.3rem;
+}
+.checkbox-item::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 1px;
+  border-bottom: 0.5px solid #F0F0F0;
+}
+.icon_check {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+.icon_check.no {
+  border: 0.5px solid #F0F0F0;
+  border-radius: 50%;
+}
+.dialog-title {
+  margin: 1rem 0;
+  font-size: 1.3rem;
+  color: #BDBDBD;
+}
+.btn-box {
+  margin-top: 2rem;
+}
+.dialog-btn {
+  width: 100%;
+  padding: 1.2rem 0;
+  background: #f49c00;
+  border-radius: 0.8rem;
+  font-size: 1.5rem;
+  color: #ffffff;
+  text-align: center;
+}
+.dialog-mask {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2001;
+  background: rgba(0, 0, 0, 0.5)
+}
+.setting-dialog-con {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 2rem 2rem 0 0;
+  z-index: 2002;
+  transform: translateY(100%);
+  transition: 0.4s;
+}
+.setting-dialog-con.show {
+  transform: translateY(0);
 }

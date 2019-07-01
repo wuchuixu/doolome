@@ -29,7 +29,7 @@
           <div class="flex-column flex-bd footer-item" @tap="showSideToolbar = true">
             <img class="footer-icon" src="../images/icon_pai.png" />
           </div>
-          <div class="flex-column flex-bd footer-item">
+          <div class="flex-column flex-bd footer-item" @tap="showSetting = true">
             <img class="footer-icon" src="../images/icon_mic.png" />
           </div>
           <div class="flex-column flex-bd footer-item">
@@ -69,10 +69,34 @@
       </div>
 
       <!-- 设置对话框 -->
-      <div class="setting-dialog" v-show="showSetting" v-cloak>
-        <div class="setting-dialog-mask" @tap="showSetting = false"></div>
+      <div class="setting-dialog" v-cloak>
+        <div class="dialog-mask" v-show="showSetting" @tap="showSetting = false"></div>
         <div :class="['setting-dialog-con', { show: showSetting }]">
-
+          <h4 class="dialog-title">模式</h4>
+          <ul class="flex radio-group">
+            <li v-for="item in modules" :key="item.id" :class="['flex-column radio-item', { checked: curModuleId == item.id }]" @tap="curModuleId = item.id">
+              <span>{{ item.text }}</span>
+            </li>
+          </ul>
+          <h4 class="dialog-title">单双手</h4>
+          <ul class="flex radio-group">
+            <li v-for="item in hands" :key="item.id" :class="['flex-column radio-item', { checked: curHandId == item.id }]" @tap="curHandId = item.id">
+              <span>{{ item.text }}</span>
+            </li>
+          </ul>
+          <h4 class="dialog-title">弹奏段落</h4>
+          <ul class="flex-column checkbox-group">
+            <li v-for="item in paragraph" :key="item.id" :class="['flex checkbox-item']" @tap="handleCheckPg(item.id)">
+              <div class="flex-bd">{{ item.text }}</div>
+              <div class="flex-column flex-ft">
+                <img class="icon_check" src="../images/icon_check.png" v-if="paragraphCheckeds.includes(item.id)" />
+                <div class="icon_check no" v-else></div>
+              </div>
+            </li>
+          </ul>
+          <div class="btn-box">
+            <div class="dialog-btn" @tap="showSetting = false">确定</div>
+          </div>
         </div>
       </div>
 
