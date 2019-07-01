@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>flow</title>
+		<script src="../js/mui.min.js"></script>
+    <link href="../css/mui.min.css" rel="stylesheet" />
+    <link href="../css/main.css" rel="stylesheet" />
+		<link href="../css/pages/flow.css" rel="stylesheet" />
+	</head>
+	<body>
+    <div class="flex-column page-flow" id="app">
+      <div class="flex header">
+        <div class="flex-bd header-left"></div>
+        <div class="flex-column header-right" @tap="goBack">
+          <img class="header-close-btn" src="../images/icon_close.png" />
+        </div>
+      </div>
+      <div class="flex-bd content">
+        <div class="mui-scroll-wrapper">
+          <div class="mui-scroll">
+            <div class="flow-container" id="flow-container"></div>
+          </div>
+        </div>
+      </div>
+      <div class="footer" v-cloak>
+        <div class="flex footer-con1" v-if="showFooter1">
+          <div class="flex-column flex-bd footer-item" @tap="showSideToolbar = true">
+            <img class="footer-icon" src="../images/icon_pai.png" />
+          </div>
+          <div class="flex-column flex-bd footer-item">
+            <img class="footer-icon" src="../images/icon_mic.png" />
+          </div>
+          <div class="flex-column flex-bd footer-item">
+            <img class="footer-icon" src="../images/icon_play.png" />
+          </div>
+        </div>
+        <div class="flex footer-con2" v-else>
+          <div class="flex-column flex-bd footer-item">
+            <div class="mui-switch mui-switch-mini mui-active">
+              <div class="mui-switch-handle"></div>
+            </div>
+            <p class="footer-text">准确度</p>
+          </div>
+          <div class="flex-column flex-bd footer-item">
+            <img class="footer-icon" src="../images/icon_replay.png" />
+            <p class="footer-text">重练</p>
+          </div>
+          <div class="flex-column flex-bd footer-item">
+            <img class="footer-icon" src="../images/icon_play1.png" />
+            <p class="footer-text">听练习</p>
+          </div>
+          <div class="flex-column flex-bd footer-item">
+            <img class="footer-icon" src="../images/icon_share.png" />
+            <p class="footer-text">分享</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 节拍速度调节 -->
+      <div class="side-toolbar" v-show="showSideToolbar" v-cloak>
+        <div class="side-toolbar-mask" @tap="showSideToolbar = false"></div>
+        <ul class="flex-column side-toolbar-con">
+          <li v-for="item in speeds" :class="['flex-column side-toolbar-item', { active: item.id == curSpeedId }]" :key="item.id" @tap="curSpeedId = item.id">
+            <span>{{ item.text }}</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 设置对话框 -->
+      <div class="setting-dialog" v-show="showSetting" v-cloak>
+        <div class="setting-dialog-mask" @tap="showSetting = false"></div>
+        <div :class="['setting-dialog-con', { show: showSetting }]">
+
+        </div>
+      </div>
+
+      <!-- 结果对话框 -->
+      <div class="result-dialog" v-show="showResult" v-cloak>
+        <div class="result-dialog-mask" @tap="showResult = false"></div>
+        <div class="result-dialog-con">
+
+        </div>
+      </div>
+    </div>
+		
+		<script src="../js/vue.min.js"></script>
+		<script src="../js/util.js"></script>
+		<script src="../js/opensheetmusicdisplay.min.js"></script>
+		<script src="../js/pages/flow.js"></script>
+	</body>
+</html>
